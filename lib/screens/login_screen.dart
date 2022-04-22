@@ -78,7 +78,7 @@ class _IniciarSesionForm extends StatelessWidget {
                       prefixIcon: Icons.people_sharp),
                   onChanged: (value) => logingForm.usuario = value,
                   validator: (value) {
-                    if (value != null) return null;
+                    if (value != null && value.length >= 2) return null;
                     return 'Campo requerido';
                   },
                 ),
@@ -107,14 +107,26 @@ class _IniciarSesionForm extends StatelessWidget {
                     child: Container(
                       padding:
                           EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                      child: Text('ingresar',
+                      child: Text(logingForm.isLoading ? 'Espere' : 'Iniciar',
                           style: TextStyle(color: Colors.white)),
                     ),
-                    onPressed: () {
-                      //TODO:Login Form
-                      if (!logingForm.isValidForm()) return;
-                      Navigator.restorablePushReplacementNamed(context, 'home');
-                    })
+                    onPressed: logingForm.isLoading
+                        ? null
+                        : () async {
+                            //quitar el teclado
+                            FocusScope.of(context).unfocus();
+                            if (!logingForm.isValidForm()) return;
+
+                            logingForm.isLoading = true;
+
+                            await Future.delayed(Duration(seconds: 2));
+
+                            //TODO: validar si el login es correcto
+                            logingForm.isLoading = false;
+
+                            Navigator.restorablePushReplacementNamed(
+                                context, 'home');
+                          })
               ],
             )));
   }

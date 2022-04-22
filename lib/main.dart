@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
         initialRoute: 'login',
         routes: {
           'login': (_) => LoginScreen(),
-          'home': (_) => HomeScreen(),
+          'home': (_) => HomeScreen(), 
+          'blog': (_) => BlogScreen(),
         },
         //cambiar colores
         theme: ThemeData.light()

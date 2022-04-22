@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/*diseño tarjeta blanca  inicio sesion*/
+
+
 class CardContainer extends StatelessWidget {
 
   //el final es para pasar los datos del widget al screen login

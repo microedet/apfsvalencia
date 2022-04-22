@@ -1,5 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+/*diseño parte superior de la pantalla de inicio sesion*/
+
 import 'package:flutter/material.dart';
 
 class AuthBackground extends StatelessWidget {
