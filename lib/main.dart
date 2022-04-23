@@ -9,10 +9,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'APFS VALENCIA',
-        initialRoute: 'login',
+        initialRoute: 'blog',
         routes: {
           'login': (_) => LoginScreen(),
-          'home': (_) => HomeScreen(), 
+          'home': (_) => HomeScreen(),
           'blog': (_) => BlogScreen(),
         },
         //cambiar colores

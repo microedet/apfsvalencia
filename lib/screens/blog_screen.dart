@@ -1,3 +1,4 @@
+import 'package:apfsvalencia/widgets/widgest.dart';
 import 'package:flutter/material.dart';
 
 class BlogScreen extends StatelessWidget {
@@ -6,9 +7,13 @@ class BlogScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-         child: Text  ('BlogScreen'),
+    return  Scaffold(
+      body: Column(
+        children: [
+
+         Card_Blog()
+        ],
+         
       ),
     );
   }
