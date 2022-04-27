@@ -9,32 +9,26 @@ class SideMenu extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          _DrawerHeader(),
+          const _DrawerHeader(),
           ListTile(
             leading: const Icon(Icons.pages_outlined),
             title: const Text('Inicio'),
             onTap: () {
-
+              Navigator.pushReplacementNamed(context, 'home');
             },
-          
           ),
           ListTile(
             leading: const Icon(Icons.login_outlined),
             title: const Text('Login'),
             onTap: () {
-              Navigator.pushNamed(context,'login');
-
-
+              //Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, 'login');
             },
-          
           ),
           ListTile(
             leading: const Icon(Icons.pages_outlined),
-            title: const Text('HOme'),
-            onTap: () {
-
-            },
-          
+            title: const Text('Settings'),
+            onTap: () {},
           ),
         ],
       ),

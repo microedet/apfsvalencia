@@ -11,6 +11,13 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(34, 80, 53, 1),
+        title: const Text('APFS VALENCIA'),
+      ),
+            drawer: const SideMenu(),
+
       body: AuthBackground(
         child: SingleChildScrollView(
           child: Column(
