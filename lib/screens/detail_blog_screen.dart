@@ -17,7 +17,22 @@ class DetailBlogScreen extends StatelessWidget {
         title: const Text(''),
       ), */
       body: CustomScrollView(
-        slivers: [_CustomAppBar()],
+        slivers: [
+          _CustomAppBar(),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+              _ArticleText(),
+            ]),
+          ),
+        ],
       ),
     );
   }
@@ -50,6 +65,23 @@ class _CustomAppBar extends StatelessWidget {
             image: NetworkImage('https://via.placeholder.com/500x300'),
             fit: BoxFit.cover,
           )),
+    );
+  }
+}
+
+class _ArticleText extends StatelessWidget {
+  const _ArticleText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Text(
+        'Anim reprehenderit qui pariatur nostrud magna aliquip magna cupidatat dolore voluptate cupidatat anim. Ad sint nulla cupidatat elit ut qui et dolore aliquip ex aliqua pariatur irure. Qui commodo velit ut ullamco laboris sunt consectetur cillum culpa. In consequat pariatur ipsum qui ad ea pariatur veniam sint do ex aliquip. Reprehenderit proident mollit aute ipsum deserunt aute exercitation amet incididunt eu ullamco ullamco.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
     );
   }
 }
