@@ -1,7 +1,24 @@
+import 'package:apfsvalencia/providers/articles_provider.dart';
 import 'package:apfsvalencia/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+void main() => runApp(AppState());
 
-void main() => runApp(MyApp());
+class AppState extends StatelessWidget {
+  const AppState({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ArticlesProvider(), lazy: false ),
+
+      ],
+      child: MyApp(),
+    );
+      
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -16,10 +33,8 @@ class MyApp extends StatelessWidget {
           'detailblog': (_) => DetailBlogScreen(),
         },
         //cambiar colores
-        theme: ThemeData.light()
-            .copyWith(scaffoldBackgroundColor: Colors.grey[300],
-             
-            ));
-        
+        theme: ThemeData.light().copyWith(
+          scaffoldBackgroundColor: Colors.grey[300],
+        ));
   }
 }
