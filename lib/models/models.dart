@@ -1,2 +1,3 @@
-export 'package:apfsvalencia/models/articles_blog_response.dart';
+export 'package:apfsvalencia/models/articleBlogResponse.dart';
+export 'package:apfsvalencia/models/categoriesBlog.dart';
 

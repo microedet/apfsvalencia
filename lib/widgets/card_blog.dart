@@ -1,9 +1,11 @@
+import 'package:apfsvalencia/providers/articles_provider.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 
 class CardBlog extends StatelessWidget {
-  const CardBlog({Key? key}) : super(key: key);
+  final List<ArticlesProvider> listadoPost;
+
+  const CardBlog({Key? key, required this.listadoPost}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +14,18 @@ class CardBlog extends StatelessWidget {
       width: double.infinity,
       height: size.height * 0.50,
       child: Swiper(
-        itemCount: 10,
+        itemCount: listadoPost.length,
         layout: SwiperLayout.STACK,
         itemWidth: size.width * 0.6,
         itemHeight: size.height * 0.4,
         itemBuilder: (_, int index) {
+          //esta variable es para calcular la cantidad de post en el blog
+          //final post = articles[index];
+          print(listadoPost);
+
           return GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'detailblog' , arguments: 'detail-article'),
+            onTap: () => Navigator.pushNamed(context, 'detailblog',
+                arguments: 'detail-article'),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(

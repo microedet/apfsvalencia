@@ -1,12 +1,15 @@
-import 'dart:collection';
-
+import 'package:apfsvalencia/models/articlesList.dart';
 import 'package:apfsvalencia/models/models.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ArticlesProvider extends ChangeNotifier {
   String _baseUrl = 'apsvalencia.pythonanywhere.com';
+
+  List<ArticlesList> articleList = [];
+
   ArticlesProvider() {
     print('ArticlesProvider Inicializado');
 
@@ -15,32 +18,21 @@ class ArticlesProvider extends ChangeNotifier {
 
   getOnDisplayArticles() async {
     var url = Uri.https(_baseUrl, '/api/blog', {});
-    // var url =Uri.https('www.googleapis.com', '/books/v1/volumes', {'q': '{http}'});
+    final response = await http.get(
+      url,
+    );
 
-    final response = await http.get(url);
+    //if (response.statusCode == 200) {
+    final article = ArticlesList.fromJson(json.decode(utf8.decode(response.bodyBytes)));
+    print(article.articleBlogresponse[0].author);
+    //final articlesResponse =
+    //    ArticlesList.fromJson(json.decode(utf8.decode(response.bodyBytes)));
+    //print(articlesResponse.articleBlogresponse);
+    //return articlesResponse.articleBlogresponse;
 
-    if (response.statusCode == 200) {
-      var jsonData = jsonDecode(response.body);
-      List<ArticlesBlogResponse> article = [];
-      for (var v in jsonData) {
-        ArticlesBlogResponse art1 = ArticlesBlogResponse(
-            title: v['title'],
-            content: v['content'],
-            published: v['published'],
-            image: v['image'],
-            author: v['author'],
-            categories: v[['categories']],
-            status: v['status']);
-        article.add(art1);
-
-        /* int total = article.length;
-      for (var i =0; i<total;i++) {
-        print(article[i].image); */
-      }
-      return article;
-      notifyListeners();
-    } else {
-      throw Exception('No es posible cargar el blog');
-    }
+    notifyListeners();
+    //} else {
+    //  throw Exception('No es posible cargar el blog');
+    //}
   }
 }
